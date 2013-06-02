@@ -11,10 +11,12 @@
     <VerticalSeekBar
             android:layout_width="wrap_content"
             android:id="@+id/leftStick"
+            android:max="100"
             android:layout_height="400dp"/>
     <VerticalSeekBar
             android:layout_width="wrap_content"
             android:id="@+id/rightStick"
+            android:max="100"
             android:layout_height="400dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"/>
@@ -42,7 +44,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="@string/right_label"
-            android:id="@+id/textView"
+            android:id="@+id/rightLabel"
             android:layout_below="@+id/leftValue"
             android:layout_toLeftOf="@+id/rightStick"
             android:layout_marginTop="18dp"/>
@@ -53,6 +55,6 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="0"
             android:id="@+id/rightValue"
-            android:layout_below="@+id/textView"
+            android:layout_below="@+id/rightLabel"
             android:layout_toLeftOf="@+id/rightStick"/>
 </RelativeLayout>

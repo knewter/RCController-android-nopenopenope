@@ -32,12 +32,14 @@ public class MainActivity extends Activity {
     return true;
   }
 
-  private void handleStick(VerticalSeekBar stick, final TextView valueText) {
+  private void handleStick(final VerticalSeekBar stick, final TextView valueText) {
+    stick.setProgress(50);
+    valueText.setText(Double.toString(mapStickValueToMotorValue(50)));
     stick.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
       @Override
       public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
         Log.d(TAG, Integer.toString(i));
-        valueText.setText(Integer.toString(i));
+        valueText.setText(Double.toString(mapStickValueToMotorValue(i)));
       }
 
       @Override
@@ -47,9 +49,15 @@ public class MainActivity extends Activity {
 
       @Override
       public void onStopTrackingTouch(SeekBar seekBar) {
-
+        // NOTE: This should happen, but it moves the thumb to the bottom for some inexplicable reason
+        stick.setProgress(50);
+        valueText.setText(Double.toString(mapStickValueToMotorValue(50)));
       }
     });
   }
-
+  protected double mapStickValueToMotorValue(int stickValue) {
+    double middle = 50;
+    double middleMapped = (double) stickValue - middle;
+    return middleMapped / middle;
+  }
 }
